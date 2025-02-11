@@ -10,6 +10,7 @@ interface Project {
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         axios.get('https://localhost:5000/api/projects')
@@ -17,21 +18,27 @@ const Projects: React.FC = () => {
                 setProjects(response.data);
             })
             .catch(error => {
-                console.error('There was an error fetching the projects!', error);
+                setError('Failed to load projects. Try again later')
             });
     }, []);
     return (
-        <div>
-            <h1>Projects</h1>
-            <ul>
+        <div className='container'>
+            <h1 className='text-center my-4 text-primary'>My projects</h1>
+
+            {error && <div className='alert alert-danger'>{error}</div>}
+            <div className='row'>
                 {projects.map(project => (
-                    <li key={project.id}>
-                        <h2>{project.title}</h2>
-                        <p>{project.description}</p>
-                        <a href={project.url} target='_blank' rel="noopener noreferrer">Visit Project</a>
-                    </li>
+                    <div key={project.id} className='col-md-4'>
+                        <div className='card mb-4 shadow-sm'>
+                            <div className='card-body'>
+                                <h5 className='card-title'>{project.title}</h5>
+                                <p className='card-text'>{project.description}</p>
+                                <a href={project.url} className='btn btn-primary' target='_blank' rel="noopener noreferrer">View Project</a>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
