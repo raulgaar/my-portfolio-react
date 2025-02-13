@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+import './i18n';
 
 interface Project {
     id: number;
@@ -11,19 +13,19 @@ interface Project {
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
     const [error, setError] = useState<string | null>(null);
-
+    const { t } = useTranslation();
     useEffect(() => {
         axios.get('https://localhost:5000/api/projects')
             .then(response => {
                 setProjects(response.data);
             })
             .catch(error => {
-                setError('Failed to load projects. Try again later')
+                setError(t('projects.error'))
             });
-    }, []);
+    }, [t]);
     return (
         <div className='container'>
-            <h1 className='text-center my-4 text-primary'>My projects</h1>
+            <h1 className='text-center my-4 text-primary'>{t('projects.title')}</h1>
 
             {error && <div className='alert alert-danger'>{error}</div>}
             <div className='row'>
@@ -33,7 +35,7 @@ const Projects: React.FC = () => {
                             <div className='card-body'>
                                 <h5 className='card-title'>{project.title}</h5>
                                 <p className='card-text'>{project.description}</p>
-                                <a href={project.url} className='btn btn-primary' target='_blank' rel="noopener noreferrer">View Project</a>
+                                <a href={project.url} className='btn btn-primary' target='_blank' rel="noopener noreferrer">{t('projects.link')}</a>
                             </div>
                         </div>
                     </div>
