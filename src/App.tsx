@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Projects from './Projects';
+import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import Dashboard from "./components/Dashboard";
 import './App.css';
 import { useTranslation } from 'react-i18next';
 import './i18n';
@@ -9,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => {
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   
 
@@ -21,6 +24,9 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<div><h1>{t('welcome')}</h1><p>{t('description')}</p></div>} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/login" element={<Login />} />
+          {/*Protected routes: only authenticated users can access */}
+          <Route path='/dashboard' element={<ProtectedRoute element={<Dashboard />} />} />
         </Routes>
       </div>
     </Router>

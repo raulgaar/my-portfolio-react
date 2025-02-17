@@ -9,13 +9,15 @@ interface Project {
     description: string;
     url: string;
 }
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Projects: React.FC = () => {
     const [projects, setProjects] = useState<Project[]>([]);
     const [error, setError] = useState<string | null>(null);
     const { t } = useTranslation();
+
     useEffect(() => {
-        axios.get('https://localhost:5000/api/projects')
+        axios.get(`${API_URL}projects`)
             .then(response => {
                 setProjects(response.data);
             })

@@ -6,7 +6,8 @@
         "home": "Home",
         "projects": "Projects",
         "about": "About Me",
-        "contact": "Contact"
+        "contact": "Contact",
+        "logout": "Log out"
     },
     "projects": {
         "title": "My Projects",
@@ -15,6 +16,11 @@
     },
     "login": {
         "failed": "Login failed",
-        "invalid": "Invalid credentials"
+        "invalid": "Invalid credentials",
+        "succesful": "Login succesful!",
+        "title": "Login",
+        "username": "Username",
+        "password": "Password",
+        "button": "Login"
     }
 }

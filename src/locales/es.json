@@ -6,7 +6,8 @@
         "home": "Inicio",
         "projects": "Proyectos",
         "about": "Sobre mí",
-        "contact": "Contacto"
+        "contact": "Contacto",
+        "logout": "Cerrar sesión"
     },
     "projects": {
         "title": "Mis Proyectos",
@@ -15,6 +16,11 @@
     },
     "login": {
         "failed": "Error en inicio de sesión",
-        "invalid": "Credenciales inválidas"
+        "invalid": "Credenciales inválidas",
+        "succesful": "Inicio de sesión exitoso!",
+        "title": "Inicio de sesión",
+        "username": "Usuario",
+        "password": "Contraseña",
+        "button": "Iniciar sesión"
     }
 }
