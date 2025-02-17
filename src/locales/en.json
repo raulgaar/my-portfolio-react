@@ -17,7 +17,7 @@
     "login": {
         "failed": "Login failed",
         "invalid": "Invalid credentials",
-        "succesful": "Login succesful!",
+        "successful": "Login succesful!",
         "title": "Login",
         "username": "Username",
         "password": "Password",

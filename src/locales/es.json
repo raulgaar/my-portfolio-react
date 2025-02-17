@@ -17,7 +17,7 @@
     "login": {
         "failed": "Error en inicio de sesión",
         "invalid": "Credenciales inválidas",
-        "succesful": "Inicio de sesión exitoso!",
+        "successful": "Inicio de sesión exitoso!",
         "title": "Inicio de sesión",
         "username": "Usuario",
         "password": "Contraseña",
