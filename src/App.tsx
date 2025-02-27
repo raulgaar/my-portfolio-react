@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Projects from './Projects';
+import Projects from './Pages/Projects';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
-import Dashboard from "./components/Dashboard";
+import ManageProjects from "./components/ManageProjects";
 import './App.css';
 import { useTranslation } from 'react-i18next';
 import './i18n';
@@ -26,7 +26,7 @@ const App: React.FC = () => {
           <Route path="/projects" element={<Projects />} />
           <Route path="/login" element={<Login />} />
           {/*Protected routes: only authenticated users can access */}
-          <Route path='/dashboard' element={<ProtectedRoute element={<Dashboard />} />} />
+          <Route path='/manage-projects' element={<ProtectedRoute element={<ManageProjects />} />} />
         </Routes>
       </div>
     </Router>

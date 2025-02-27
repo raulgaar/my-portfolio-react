@@ -1,18 +1,21 @@
 import axios from "axios";
+import { getToken } from "./authService";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-export const login = async (username: string, password: string) => {
-    try {
-        const response = await axios.post(`${API_URL}auth/login`, { username, password });
-        return response.data;
-    } catch (error) {
-        console.error("Login failed", error);
-        throw new Error("Invalid credentials");
-    }
+const api = axios.create({
+    baseURL: API_URL,
+});
 
-}
+api.interceptors.request.use(
+    (config) => {
+        const token = getToken();
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
 
-export const logout = async () => {
-    localStorage.removeItem("token");
-}
+export default api;

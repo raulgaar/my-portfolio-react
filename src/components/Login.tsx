@@ -1,22 +1,27 @@
 import React, { useState } from "react";
-import { login } from "../services/api";
+import { login } from "../services/login";
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from "react-router-dom";
 import '../i18n';
+import { saveToken } from "../services/authService";
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
+    
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError(null);
-
+        
         try{
             const data = await login(username, password);
-            localStorage.setItem("token", data.token);
-            alert(t('login.successful'));
+            saveToken(data.token);
+            // alert(t('login.successful'));
+            navigate("/manage-projects");
         } catch (err) {
             setError(t('login.invalid'))
         }

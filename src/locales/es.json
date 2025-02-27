@@ -1,4 +1,15 @@
 {
+    "headers": {
+        "title": "Título",
+        "description": "Descripción",
+        "actions": "Acciones"
+    },
+    "actions": {
+        "save": "Guardar",
+        "edit": "Editar",
+        "delete": "Borrar",
+        "close": "cerrar"
+    },
     "welcome": "Bienvenidos a mi portafolio",
     "description": "Soy un desarrollador de software apasionado por la tecnología.",
     "selectLanguage": "Select Language:",
@@ -7,7 +18,8 @@
         "projects": "Proyectos",
         "about": "Sobre mí",
         "contact": "Contacto",
-        "logout": "Cerrar sesión"
+        "logout": "Cerrar sesión",
+        "manage-projects": "Editor de Proyectos"
     },
     "projects": {
         "title": "Mis Proyectos",
@@ -22,5 +34,14 @@
         "username": "Usuario",
         "password": "Contraseña",
         "button": "Iniciar sesión"
+    },
+    "project-manager": {
+        "title": "Modificar Proyectos",
+        "login-message": "Debes iniciar sesión para modificar los proyectos.",
+        "nav-to-login": "Ir a Inicio de sesión",
+        "add-project-button": "Agregar Proyecto",
+        "no-projects": "No se encontraron proyectos.",
+        "add-project-title": "Nuevo proyecto",
+        "edit-project-title": "Editar proyecto"
     }
 }

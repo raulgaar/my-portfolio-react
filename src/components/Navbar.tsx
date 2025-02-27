@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import { logout } from "../services/api";
+import { logout } from "../services/login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useTranslation } from 'react-i18next';
 import '../i18n';
+import { getToken } from "../services/authService";
 
 const Navbar: React.FC = () => {
 
@@ -14,7 +15,7 @@ const Navbar: React.FC = () => {
     }
 
     const navigate = useNavigate();
-    const token = localStorage.getItem("token");
+    const token = getToken();
 
     const handleLogout = () => {
         logout();
@@ -38,20 +39,26 @@ const Navbar: React.FC = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/projects">{t('navbar.projects')}</Link>
                         </li>
+                        <li className="nav-item">
+                            {token ? (
+                                <Link className="nav-link" to="/manage-projects">{t('navbar.manage-projects')}
+                                </Link>
+                            ) : (<></>)}
+                        </li>
                     </ul>
                 </div>
-                    <label htmlFor='language-select' className='me-2'>
-                        {t('selectLanguage')}
-                    </label>
-                    <select
-                        id="language-select"
-                        className='form-select w-auto'
-                        onChange={changeLanguage}
-                        value={i18n.language}
-                    >
-                        <option value='en'>English</option>
-                        <option value='es'>Español</option>
-                    </select>
+                <label htmlFor='language-select' className='me-2'>
+                    {t('selectLanguage')}
+                </label>
+                <select
+                    id="language-select"
+                    className='form-select w-auto'
+                    onChange={changeLanguage}
+                    value={i18n.language}
+                >
+                    <option value='en'>English</option>
+                    <option value='es'>Español</option>
+                </select>
                 {token ? (
                     <button className="btn btn-danger" onClick={handleLogout}>
                         {t('navbar.logout')}
